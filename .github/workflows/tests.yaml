@@ -1,21 +1,6 @@
 name: Tests
 on:
-  push:
-    branches:
-      - main
-      - '*.x'
-    paths-ignore:
-      - 'docs/**'
-      - '*.md'
-      - '*.rst'
-  pull_request:
-    branches:
-      - main
-      - '*.x'
-    paths-ignore:
-      - 'docs/**'
-      - '*.md'
-      - '*.rst'
+  workflow_dispatch:
 jobs:
   tests:
     name: ${{ matrix.name }}
