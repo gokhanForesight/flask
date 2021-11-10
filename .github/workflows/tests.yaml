@@ -36,9 +36,10 @@ jobs:
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: pip|${{ runner.os }}|${{ matrix.python }}|${{ hashFiles('setup.py') }}|${{ hashFiles('requirements/*.txt') }}
-      - run: pip install tox
       - name: Run tests
-        run: tox -e ${{ matrix.tox }}
+        run: |
+          pip install tox
+          tox -e ${{ matrix.tox }}
         env:
           THUNDRA_AGENT_REPORT_REST_BASEURL: https://collector.thundra.me/v1
           THUNDRA_AGENT_DEBUG_ENABLE: true
