@@ -38,4 +38,13 @@ jobs:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: pip|${{ runner.os }}|${{ matrix.python }}|${{ hashFiles('setup.py') }}|${{ hashFiles('requirements/*.txt') }}
       - run: pip install tox
+      - name: Install Thundra Python Agent
+        uses: thundra-io/thundra-foresight-python-action@action-experiment
+        with:
+          apikey: ${{ secrets.THUNDRA_APIKEY }}
+          project_id: ${{ secrets.THUNDRA_PROJECT_ID }}
+          test_disable: false
       - run: tox -e ${{ matrix.tox }}
+        env:
+          THUNDRA_AGENT_REPORT_REST_BASEURL: https://collector.thundra.me/v1
+          THUNDRA_AGENT_DEBUG_ENABLE: true
