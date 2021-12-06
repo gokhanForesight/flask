@@ -29,3 +29,4 @@ python-dotenv==0.19.1
 toml==0.10.2
     # via pytest
 thundra==3.0.0
+pytest-parallel
