@@ -38,6 +38,5 @@ jobs:
           key: pip|${{ runner.os }}|${{ matrix.python }}|${{ hashFiles('setup.py') }}|${{ hashFiles('requirements/*.txt') }}
       - name: Run tests
         run: |
-          pip install pytest-parallel
           pip install tox
           tox -e ${{ matrix.tox }}
